@@ -45,23 +45,31 @@ void loop() {
     intersecciones++;
     Motor(75, 75);
     delay(333);
-  }  else if (sensorValues[0] > umbral && sensorValues[1] > umbral && sensorValues[2] > umbral && sensorValues[3]  > umbral && sensorValues[4] > umbral && sensorValues[5] < umbral && sensorValues[6] < umbral && sensorValues[7] < umbral) {
+  }  else if (sensorValues[1] > umbral && sensorValues[2] > umbral && sensorValues[3]  > umbral && sensorValues[4] > umbral && sensorValues[5] < umbral && sensorValues[6] < umbral && sensorValues[7] < umbral) {
     Motor(0, 0);
-    delay(1000);
-    Motor(-50,150);
-    delay(1000);
-    SerialBT.print("izf");
+    delay(500);
+    Motor(-50, 50); // el derecho esta multiplicando por un - 1
+    delay(600);
+    Motor(0, 100);
+    delay(500);
+    SerialBT.println("izf");
     //izF
   }
-  else if (sensorValues[0] < umbral && sensorValues[1] < umbral && sensorValues[2] < umbral && sensorValues[3] > umbral && sensorValues[4] > umbral && sensorValues[5] > umbral && sensorValues[6] > umbral && sensorValues[7] > umbral) {
+  else if ( sensorValues[1] < umbral && sensorValues[2] < umbral && sensorValues[3] > umbral && sensorValues[4] > umbral && sensorValues[5] > umbral && sensorValues[6] > umbral && sensorValues[7] > umbral) {
     Motor(0, 0);
-    delay(1000);
-    Motor(150, -50);
-    delay(1000);
-        SerialBT.print("der");
+    delay(500);
+    Motor(-50, 50);
+    delay(600);
+    Motor(100, 0);
+    delay(500);
+    SerialBT.println("der");
     //deF
   }
-  
+  else{
+    seguidorDeLineas();
+    
+    }
+
 }
 /*
   if (sensorValues[0] > umbral) {
